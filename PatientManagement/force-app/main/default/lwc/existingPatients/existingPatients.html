@@ -1,0 +1,27 @@
+<template>
+    <lightning-card title="Existing Patients">
+        <div class="slds-m-around_medium">
+            <lightning-input type="text" label="Search Patients" placeholder="Search by Name or ID" value={searchKey}
+                onchange={handleSearch}>
+            </lightning-input>
+
+            <template if:true={filteredPatients}>
+                <template for:each={filteredPatients} for:item="patient">
+                    <div key={patient.Id} class="slds-box slds-m-top_small">
+                        <p><strong>Name:</strong> {patient.Name}</p>
+                        <p><strong>ID:</strong> {patient.Id}</p>
+                        <p><strong>Date of Birth:</strong> {patient.Date_of_Birth__c}</p>
+                        <p><strong>Status:</strong> {patient.Treatment_Status__c}</p>
+                        <lightning-button label="View Details" variant="brand" data-id={patient.Id}
+                            onclick={handleViewDetails}>
+                        </lightning-button>
+                    </div>
+                </template>
+            </template>
+
+            <template if:false={filteredPatients}>
+                <p>No patients found.</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>

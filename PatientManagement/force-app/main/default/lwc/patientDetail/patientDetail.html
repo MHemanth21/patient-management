@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="Patient Details">
+        <div class="slds-m-around_medium" if:true={patient}>
+            <p><strong>Name:</strong> {patient.Name}</p>
+            <p><strong>ID:</strong> {patient.Id}</p>
+            <p><strong>Date of Birth:</strong> {patient.Date_of_Birth__c}</p>
+            <p><strong>Status:</strong> {patient.Treatment_Status__c}</p>
+        </div>
+
+        <template if:false={patient}>
+            <p>Loading patient details...</p>
+        </template>
+    </lightning-card>
+</template>
